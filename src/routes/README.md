@@ -1,21 +1,36 @@
-# Routes
+# 🚛 A&R Truck & Trailer Repairs
 
-TanStack Start uses **file-based routing**. Every `.tsx` file in this directory
-is a route. Do **not** create `src/pages/`, `src/routes/_app/index.tsx`, or
-`app/layout.tsx` — those are Next.js / Remix conventions. The only root layout
-is `src/routes/__root.tsx`.
+A modern, high-performance **mobile truck & trailer repair website** built with **React, TanStack Start, and Vite**, designed for a Calgary-based heavy-duty diesel repair business.
 
-## Conventions
+This project focuses on fast SSR rendering, SEO optimization, and conversion-driven UI for roadside assistance services.
 
-| File | URL |
-| --- | --- |
-| `index.tsx` | `/` |
-| `about.tsx` | `/about` |
-| `users/index.tsx` | `/users` |
-| `users/$id.tsx` | `/users/:id` (dynamic — bare `$`, no curly braces) |
-| `posts/{-$category}.tsx` | `/posts/:category?` (optional segment) |
-| `files/$.tsx` | `/files/*` (splat — read via `_splat` param, never `*`) |
-| `_layout.tsx` | layout route (renders children via `<Outlet />`) |
-| `__root.tsx` | app shell — wraps every page; preserve `<Outlet />` |
+---
 
-`routeTree.gen.ts` is auto-generated. Don't edit it by hand.
+## 🌐 Live Features
+
+- 24/7 emergency roadside service landing page
+- Mobile-first responsive design
+- Service request form (email-based)
+- SEO-optimized metadata (Open Graph + meta tags)
+- Service listing system (modular)
+- Gallery showcasing real repair work
+- Testimonials for trust building
+- Service area targeting (Calgary, Airdrie, Okotoks, etc.)
+- Google Maps integration
+
+---
+
+## ⚙️ Tech Stack
+
+- ⚛️ React 19
+- ⚡ Vite
+- 🧭 TanStack Router
+- 🚀 TanStack Start (SSR)
+- 🎨 Tailwind CSS
+- 🧩 Radix UI components
+- 🎯 Lucide Icons
+- 🧠 TypeScript
+
+---
+
+## 📁 Project Structure
