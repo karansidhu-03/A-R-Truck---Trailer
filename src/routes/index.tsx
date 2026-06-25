@@ -1,5 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Phone, ShieldCheck, Clock, MapPin, ArrowRight, Send, Zap, BadgeCheck, Wrench, Star, Quote } from "lucide-react";
+import {
+  Phone,
+  ShieldCheck,
+  Clock,
+  MapPin,
+  ArrowRight,
+  Send,
+  Zap,
+  BadgeCheck,
+  Wrench,
+  Star,
+  Quote,
+} from "lucide-react";
 import heroImg from "../assets/hero-truck.jpg";
 import serviceImg from "../assets/mobile-service.jpg";
 import gallery1 from "../assets/gallery-1.jpg";
@@ -12,10 +24,20 @@ import { SERVICES } from "../lib/services";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "A&R Truck & Trailer Repairs | Mobile Repair Calgary & Airdrie" },
-      { name: "description", content: "24/7 mobile commercial truck & trailer repair serving Calgary, Airdrie, Okotoks, Cochrane & Chestermere. Roadside assistance, CVIP inspections, diagnostics & brakes." },
+      {
+        title: "A&R Truck & Trailer Repairs | Mobile Repair Calgary & Airdrie",
+      },
+      {
+        name: "description",
+        content:
+          "24/7 mobile commercial truck & trailer repair serving Calgary, Airdrie, Okotoks, Cochrane & Chestermere. Roadside assistance, CVIP inspections, diagnostics & brakes.",
+      },
       { property: "og:title", content: "A&R Truck & Trailer Repairs Ltd." },
-      { property: "og:description", content: "We bring the shop to you. Yard, job site, or shoulder of the highway." },
+      {
+        property: "og:description",
+        content:
+          "We bring the shop to you. Yard, job site, or shoulder of the highway.",
+      },
     ],
   }),
   component: Index,
@@ -51,12 +73,15 @@ function Index() {
 
             <h1 className="font-display font-extrabold uppercase leading-[0.95] text-[2.6rem] sm:text-6xl lg:text-7xl tracking-tight">
               Calgary &amp; Airdrie
-              <span className="block text-[var(--safety)] mt-2">Mobile Truck Repair</span>
+              <span className="block text-[var(--safety)] mt-2">
+                Mobile Truck Repair
+              </span>
             </h1>
 
             <p className="mt-7 max-w-xl text-base md:text-lg text-white/75 leading-relaxed">
-              Need emergency roadside assistance? Our heavy-duty mobile diesel mechanics are on
-              standby 24/7/365 to get your commercial truck, trailer, or fleet back on the road.
+              Need emergency roadside assistance? Our heavy-duty mobile diesel
+              mechanics are on standby 24/7/365 to get your commercial truck,
+              trailer, or fleet back on the road.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -77,8 +102,12 @@ function Index() {
                 <Zap className="h-5 w-5" />
               </div>
               <div>
-                <div className="font-display font-extrabold text-lg uppercase tracking-wide">Request Service</div>
-                <div className="text-xs text-white/60">24/7 dispatch — fast response.</div>
+                <div className="font-display font-extrabold text-lg uppercase tracking-wide">
+                  Request Service
+                </div>
+                <div className="text-xs text-white/60">
+                  24/7 dispatch — fast response.
+                </div>
               </div>
             </div>
 
@@ -88,16 +117,50 @@ function Index() {
               encType="text/plain"
               className="mt-5 space-y-3"
             >
-              <input name="name" required placeholder="Full Name" className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:border-[var(--safety)]" />
-              <input name="phone" required type="tel" placeholder="(403) 000-0000" className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:border-[var(--safety)]" />
-              <input name="email" type="email" placeholder="Email Address" className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:border-[var(--safety)]" />
-              <select name="service" required defaultValue="" className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm text-white/90 focus:outline-none focus:border-[var(--safety)]">
-                <option value="" disabled className="bg-[var(--ink)]">Service Needed…</option>
+              <input
+                name="name"
+                required
+                placeholder="Full Name"
+                className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:border-[var(--safety)]"
+              />
+              <input
+                name="phone"
+                required
+                type="tel"
+                placeholder="(403) 000-0000"
+                className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:border-[var(--safety)]"
+              />
+              <input
+                name="email"
+                type="email"
+                placeholder="Email Address"
+                className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:border-[var(--safety)]"
+              />
+              <select
+                name="service"
+                required
+                defaultValue=""
+                className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm text-white/90 focus:outline-none focus:border-[var(--safety)]"
+              >
+                <option value="" disabled className="bg-[var(--ink)]">
+                  Service Needed…
+                </option>
                 {SERVICES.map((s) => (
-                  <option key={s.slug} value={s.title} className="bg-[var(--ink)]">{s.title}</option>
+                  <option
+                    key={s.slug}
+                    value={s.title}
+                    className="bg-[var(--ink)]"
+                  >
+                    {s.title}
+                  </option>
                 ))}
               </select>
-              <textarea name="message" rows={3} placeholder="How can we help?" className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:border-[var(--safety)]" />
+              <textarea
+                name="message"
+                rows={3}
+                placeholder="How can we help?"
+                className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:border-[var(--safety)]"
+              />
               <button type="submit" className="btn-primary w-full !py-3.5">
                 <Send className="h-4 w-4" /> Send Request
               </button>
@@ -109,16 +172,35 @@ function Index() {
         <div className="container-x pb-14 md:pb-20 -mt-2 md:-mt-4">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { icon: Clock, title: "24/7 Roadside Units", text: "Fully loaded mobile mechanics for tire changes, air line repairs, and diagnostics." },
-              { icon: Wrench, title: "Red Seal Experts", text: "Heavy-duty diesel specialists equipped with diagnostic tools to resolve engine codes." },
-              { icon: BadgeCheck, title: "CVIP Accredited", text: "Alberta licensed Commercial Vehicle Inspection Programs for full compliance." },
+              {
+                icon: Clock,
+                title: "24/7 Roadside Units",
+                text: "Fully loaded mobile mechanics for tire changes, air line repairs, and diagnostics.",
+              },
+              {
+                icon: Wrench,
+                title: "Red Seal Experts",
+                text: "Heavy-duty diesel specialists equipped with diagnostic tools to resolve engine codes.",
+              },
+              {
+                icon: BadgeCheck,
+                title: "CVIP Accredited",
+                text: "Alberta licensed Commercial Vehicle Inspection Programs for full compliance.",
+              },
             ].map(({ icon: Icon, title, text }) => (
-              <div key={title} className="rounded-xl bg-white text-[var(--ink)] p-6 shadow-xl ring-1 ring-black/5">
+              <div
+                key={title}
+                className="rounded-xl bg-white text-[var(--ink)] p-6 shadow-xl ring-1 ring-black/5"
+              >
                 <div className="grid h-11 w-11 place-items-center rounded-md bg-[var(--safety)]/10 text-[var(--safety)] mb-4">
                   <Icon className="h-5 w-5" />
                 </div>
-                <div className="font-display font-extrabold uppercase tracking-wide text-base">{title}</div>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{text}</p>
+                <div className="font-display font-extrabold uppercase tracking-wide text-base">
+                  {title}
+                </div>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  {text}
+                </p>
               </div>
             ))}
           </div>
@@ -131,22 +213,32 @@ function Index() {
           <div className="max-w-2xl">
             <div className="eyebrow">Core Services</div>
             <h2 className="mt-3 text-3xl md:text-5xl uppercase text-[var(--ink)] font-extrabold leading-tight">
-              Heavy-Duty <span className="text-[var(--safety)]">Mechanical Repair</span>
+              Heavy-Duty{" "}
+              <span className="text-[var(--safety)]">Mechanical Repair</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Professional fleet inspections, diesel tuning, mechanical overhauls, and trailer body
-              maintenance executed by on-site technicians across Calgary &amp; Area.
+              Professional fleet inspections, diesel tuning, mechanical
+              overhauls, and trailer body maintenance executed by on-site
+              technicians across Calgary &amp; Area.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s) => (
-              <ServiceCard key={s.slug} icon={s.icon} title={s.title} description={s.description} />
+              <ServiceCard
+                key={s.slug}
+                icon={s.icon}
+                title={s.title}
+                description={s.description}
+              />
             ))}
           </div>
 
           <div className="mt-10">
-            <Link to="/services" className="inline-flex items-center gap-2 font-bold uppercase tracking-wider text-sm text-[var(--safety)] hover:text-[var(--safety-dark)]">
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 font-bold uppercase tracking-wider text-sm text-[var(--safety)] hover:text-[var(--safety-dark)]"
+            >
               View full service details <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -166,19 +258,24 @@ function Index() {
               className="rounded-xl shadow-2xl w-full h-auto object-cover ring-1 ring-white/10"
             />
             <div className="hidden md:block absolute -bottom-6 -right-6 bg-[var(--safety)] text-white rounded-xl p-5 shadow-xl max-w-xs">
-              <div className="font-display text-4xl font-extrabold leading-none">24/7</div>
-              <div className="mt-1 text-sm font-semibold uppercase tracking-wider">Roadside dispatch · Calgary &amp; Area</div>
+              <div className="font-display text-4xl font-extrabold leading-none">
+                24/7
+              </div>
+              <div className="mt-1 text-sm font-semibold uppercase tracking-wider">
+                Roadside dispatch · Calgary &amp; Area
+              </div>
             </div>
           </div>
           <div className="order-1 lg:order-2">
             <div className="eyebrow">Why A&amp;R</div>
             <h2 className="mt-3 text-3xl md:text-5xl uppercase font-extrabold leading-tight">
-              A tow and a wait costs more than a <span className="text-[var(--safety)]">repair</span>.
+              A tow and a wait costs more than a{" "}
+              <span className="text-[var(--safety)]">repair</span>.
             </h2>
             <p className="mt-5 text-white/75 leading-relaxed">
-              Our mobile units are equipped to handle the majority of mechanical repairs right where
-              your truck sits. No tow bills, no shop queues, and your driver back on the road in
-              hours — not days.
+              Our mobile units are equipped to handle the majority of mechanical
+              repairs right where your truck sits. No tow bills, no shop queues,
+              and your driver back on the road in hours — not days.
             </p>
             <ul className="mt-7 space-y-3.5">
               {[
@@ -196,7 +293,9 @@ function Index() {
               <a href="tel:+18257604242" className="btn-primary">
                 <Phone className="h-4 w-4" /> Speak to a Mechanic
               </a>
-              <Link to="/about" className="btn-outline">About Us</Link>
+              <Link to="/about" className="btn-outline">
+                About Us
+              </Link>
             </div>
           </div>
         </div>
@@ -210,8 +309,18 @@ function Index() {
             Proudly serving Calgary &amp; surrounding region
           </h2>
           <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm font-semibold">
-            {["Calgary", "Airdrie", "Okotoks", "Cochrane", "Chestermere", "Surrounding Areas"].map((c) => (
-              <span key={c} className="inline-flex items-center gap-2 rounded-full bg-[var(--surface)] border border-border px-4 py-2 text-[var(--ink)]">
+            {[
+              "Calgary",
+              "Airdrie",
+              "Okotoks",
+              "Cochrane",
+              "Chestermere",
+              "Surrounding Areas",
+            ].map((c) => (
+              <span
+                key={c}
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--surface)] border border-border px-4 py-2 text-[var(--ink)]"
+              >
                 <MapPin className="h-4 w-4 text-[var(--safety)]" /> {c}
               </span>
             ))}
@@ -225,21 +334,37 @@ function Index() {
           <div className="max-w-2xl">
             <div className="eyebrow">Our Work</div>
             <h2 className="mt-3 text-3xl md:text-5xl uppercase text-[var(--ink)] font-extrabold leading-tight">
-              On the road, <span className="text-[var(--safety)]">in the field</span>
+              On the road,{" "}
+              <span className="text-[var(--safety)]">in the field</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
-              A snapshot of recent jobs — engine diagnostics, CVIP inspections, brake work, and
-              roadside tire changes across the Calgary region.
+              A snaps of recent jobs — engine diagnostics, CVIP inspections,
+              brake work, and roadside tire changes across the Calgary region.
             </p>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { src: gallery1, alt: "Mechanic working on a semi-truck engine bay at night" },
-              { src: gallery2, alt: "Mobile service truck assisting a commercial trailer at sunset" },
-              { src: gallery3, alt: "CVIP commercial vehicle inspection underneath a heavy duty truck" },
-              { src: gallery4, alt: "Heavy duty truck tire being changed roadside" },
+              {
+                src: gallery1,
+                alt: "Mechanic working on a semi-truck engine bay at night",
+              },
+              {
+                src: gallery2,
+                alt: "Mobile service truck assisting a commercial trailer at sunset",
+              },
+              {
+                src: gallery3,
+                alt: "CVIP commercial vehicle inspection underneath a heavy duty truck",
+              },
+              {
+                src: gallery4,
+                alt: "Heavy duty truck tire being changed roadside",
+              },
             ].map((img) => (
-              <div key={img.alt} className="group relative overflow-hidden rounded-xl ring-1 ring-black/5 shadow-md aspect-[4/3]">
+              <div
+                key={img.alt}
+                className="group relative overflow-hidden rounded-xl ring-1 ring-black/5 shadow-md aspect-[4/3]"
+              >
                 <img
                   src={img.src}
                   alt={img.alt}
@@ -261,19 +386,25 @@ function Index() {
           <div>
             <div className="eyebrow">Coverage Map</div>
             <h2 className="mt-3 text-3xl md:text-5xl uppercase font-extrabold leading-tight">
-              Based in <span className="text-[var(--safety)]">Calgary</span>, dispatching region-wide
+              Based in <span className="text-[var(--safety)]">Calgary</span>,
+              dispatching region-wide
             </h2>
             <p className="mt-5 text-white/75 leading-relaxed">
-              From downtown Calgary out to Airdrie, Okotoks, Cochrane, and Chestermere — wherever
-              your truck goes down, we'll roll a truck to you.
+              From downtown Calgary out to Airdrie, Okotoks, Cochrane, and
+              Chestermere — wherever your truck goes down, we'll roll a truck to
+              you.
             </p>
             <ul className="mt-6 space-y-2.5 text-sm">
-              {["Calgary", "Airdrie", "Okotoks", "Cochrane", "Chestermere"].map((c) => (
-                <li key={c} className="flex items-center gap-3">
-                  <MapPin className="h-4 w-4 text-[var(--safety)]" />
-                  <span className="text-white/85">{c} &amp; surrounding areas</span>
-                </li>
-              ))}
+              {["Calgary", "Airdrie", "Okotoks", "Cochrane", "Chestermere"].map(
+                (c) => (
+                  <li key={c} className="flex items-center gap-3">
+                    <MapPin className="h-4 w-4 text-[var(--safety)]" />
+                    <span className="text-white/85">
+                      {c} &amp; surrounding areas
+                    </span>
+                  </li>
+                ),
+              )}
             </ul>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="tel:+18257604242" className="btn-primary">
@@ -310,10 +441,12 @@ function Index() {
           <div className="max-w-2xl mx-auto text-center">
             <div className="eyebrow justify-center">Testimonials</div>
             <h2 className="mt-3 text-3xl md:text-5xl uppercase text-[var(--ink)] font-extrabold leading-tight">
-              Trusted by <span className="text-[var(--safety)]">drivers &amp; fleets</span>
+              Trusted by{" "}
+              <span className="text-[var(--safety)]">drivers &amp; fleets</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Real feedback from owner-operators and fleet managers we've helped across Calgary &amp; Area.
+              Real feedback from owner-operators and fleet managers we've helped
+              across Calgary &amp; Area.
             </p>
           </div>
 
@@ -355,7 +488,9 @@ function Index() {
                   <div className="font-display font-extrabold uppercase tracking-wide text-sm text-[var(--ink)]">
                     {t.name}
                   </div>
-                  <div className="text-xs text-muted-foreground mt-0.5">{t.role}</div>
+                  <div className="text-xs text-muted-foreground mt-0.5">
+                    {t.role}
+                  </div>
                 </figcaption>
               </figure>
             ))}
@@ -367,14 +502,24 @@ function Index() {
       <section className="bg-[var(--safety)] text-white">
         <div className="container-x py-12 grid gap-6 md:grid-cols-[1fr_auto] items-center">
           <div>
-            <h2 className="text-2xl md:text-3xl uppercase font-extrabold">Down on the side of the highway right now?</h2>
-            <p className="mt-2 text-white/90">We'll head your way and get you moving again — safely.</p>
+            <h2 className="text-2xl md:text-3xl uppercase font-extrabold">
+              Down on the side of the highway right now?
+            </h2>
+            <p className="mt-2 text-white/90">
+              We'll head your way and get you moving again — safely.
+            </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <a href="tel:+18257604242" className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-md bg-[var(--ink)] text-white font-extrabold uppercase tracking-wider text-sm hover:bg-black transition-colors">
+            <a
+              href="tel:+18257604242"
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-md bg-[var(--ink)] text-white font-extrabold uppercase tracking-wider text-sm hover:bg-black transition-colors"
+            >
               <Phone className="h-5 w-5" /> Call (825) 760-4242
             </a>
-            <Link to="/contact" className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-md bg-white text-[var(--ink)] font-extrabold uppercase tracking-wider text-sm hover:bg-white/90 transition-colors">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-md bg-white text-[var(--ink)] font-extrabold uppercase tracking-wider text-sm hover:bg-white/90 transition-colors"
+            >
               Request Help
             </Link>
           </div>

@@ -1,8 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Menu, X, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
-import logoAsset from "@/assets/ar-logo.png.asset.json";
-
+import logoAsset from "@/assets/ar-logo.png";
 
 const TEL = "+18257604242";
 const TEL_DISPLAY = "+1 (825) 760-4242";
@@ -23,11 +22,17 @@ export function Header() {
       <div className="hidden md:block bg-[var(--ink)] text-white/80 text-xs">
         <div className="container-x flex h-10 items-center justify-between">
           <div className="flex items-center gap-6">
-            <a href={`mailto:${EMAIL}`} className="flex items-center gap-2 hover:text-white">
+            <a
+              href={`mailto:${EMAIL}`}
+              className="flex items-center gap-2 hover:text-white"
+            >
               <Mail className="h-3.5 w-3.5 text-[var(--safety)]" />
               {EMAIL}
             </a>
-            <a href={`tel:${TEL}`} className="flex items-center gap-2 hover:text-white">
+            <a
+              href={`tel:${TEL}`}
+              className="flex items-center gap-2 hover:text-white"
+            >
               <Phone className="h-3.5 w-3.5 text-[var(--safety)]" />
               {TEL_DISPLAY}
             </a>
@@ -45,9 +50,13 @@ export function Header() {
       {/* Main bar */}
       <div className="bg-white/95 backdrop-blur border-b border-border">
         <div className="container-x flex h-16 md:h-20 items-center gap-4">
-          <Link to="/" className="flex items-center gap-3 min-w-0" aria-label="A&R Truck & Trailer Repairs Ltd. — Home">
+          <Link
+            to="/"
+            className="flex items-center gap-3 min-w-0"
+            aria-label="A&R Truck & Trailer Repairs Ltd. — Home"
+          >
             <img
-              src={logoAsset.url}
+              src={logoAsset}
               alt="A&R Truck & Trailer Repairs Ltd."
               className="h-12 md:h-16 w-auto shrink-0 object-contain"
               loading="eager"
@@ -63,7 +72,6 @@ export function Header() {
             </span>
           </Link>
 
-
           <nav className="hidden lg:flex items-center gap-8 mx-auto">
             {nav.map((n) => (
               <Link
@@ -71,7 +79,9 @@ export function Header() {
                 to={n.to}
                 activeOptions={{ exact: true }}
                 activeProps={{ className: "text-[var(--safety)]" }}
-                inactiveProps={{ className: "text-foreground/80 hover:text-[var(--safety)]" }}
+                inactiveProps={{
+                  className: "text-foreground/80 hover:text-[var(--safety)]",
+                }}
                 className="text-sm font-bold uppercase tracking-wider transition-colors"
               >
                 {n.label}
@@ -79,16 +89,27 @@ export function Header() {
             ))}
           </nav>
 
-          <a href={`tel:${TEL}`} className="btn-primary hidden md:inline-flex !py-3 !px-5 text-xs">
+          <a
+            href={`tel:${TEL}`}
+            className="btn-primary hidden md:inline-flex !py-3 !px-5 text-xs"
+          >
             <Phone className="h-4 w-4" />
             Call Dispatch
           </a>
 
-          <a href={`tel:${TEL}`} className="md:hidden grid place-items-center h-10 w-10 rounded-md bg-[var(--safety)] text-white" aria-label="Call now">
+          <a
+            href={`tel:${TEL}`}
+            className="md:hidden grid place-items-center h-10 w-10 rounded-md bg-[var(--safety)] text-white"
+            aria-label="Call now"
+          >
             <Phone className="h-5 w-5" />
           </a>
 
-          <button onClick={() => setOpen((v) => !v)} className="lg:hidden grid place-items-center h-10 w-10 rounded-md border border-border" aria-label="Menu">
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="lg:hidden grid place-items-center h-10 w-10 rounded-md border border-border"
+            aria-label="Menu"
+          >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
