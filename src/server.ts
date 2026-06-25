@@ -1,3 +1,10 @@
-import { createStartHandler } from "@tanstack/react-start/server";
+import {
+  createStartHandler,
+  defaultStreamHandler,
+} from "@tanstack/react-start/server";
+import { getRouter } from "./router"; // 1. Import getRouter instead of createRouter
 
-export default createStartHandler();
+// 2. Map getRouter to the callback expected by TanStack
+export default createStartHandler({
+  createRouter: getRouter,
+})(defaultStreamHandler);

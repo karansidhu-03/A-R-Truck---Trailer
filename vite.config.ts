@@ -12,7 +12,7 @@ export default defineConfig({
   },
   plugins: [
     tanstackStart({
-      server: { entry: "server.ts" },
+      server: { entry: "src/server.ts" },
       preset: "vercel",
     }),
     nitro(),
