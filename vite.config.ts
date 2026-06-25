@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import path from "path";
+import { nitro } from "nitro/vite";
 
 export default defineConfig({
   resolve: {
@@ -12,7 +13,9 @@ export default defineConfig({
   plugins: [
     tanstackStart({
       server: { entry: "server.ts" },
+      preset: "vercel",
     }),
+    nitro(),
     tailwindcss(),
   ],
 });
