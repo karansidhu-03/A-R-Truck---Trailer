@@ -12,7 +12,10 @@ export default defineConfig({
   },
   plugins: [
     tanstackStart({
-      server: { entry: "server.ts" },
+      server: {
+        entry: "server.ts",
+        preset: "vercel",
+      },
     }),
     tailwindcss(),
     react(),
