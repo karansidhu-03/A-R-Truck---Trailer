@@ -60,25 +60,25 @@ export function Header() {
 
       {/* Main bar */}
       <div className="bg-white/95 backdrop-blur border-b border-border">
-        <div className="container-x flex h-16 md:h-20 items-center justify-between gap-4">
+        <div className="container-x flex h-16 md:h-20 items-center justify-between gap-2 sm:gap-4">
           {/* Logo and Branding */}
           <Link
             to="/"
-            className="flex items-center gap-3 min-w-0 shrink-0"
+            className="flex items-center gap-2 sm:gap-3 min-w-0 shrink"
             aria-label="A&R Truck & Trailer Repairs Ltd. — Home"
           >
             <img
               src={logoAsset}
               alt="A&R Truck & Trailer Repairs Ltd."
-              className="h-12 md:h-16 w-auto shrink-0 object-contain"
+              className="h-10 sm:h-12 md:h-16 w-auto shrink-0 object-contain"
               loading="eager"
               decoding="async"
             />
             <span className="flex flex-col min-w-0 leading-tight">
-              <span className="font-display font-extrabold uppercase tracking-wide text-[var(--ink)] text-xs sm:text-sm md:text-base truncate">
+              <span className="font-display font-extrabold uppercase tracking-wide text-[var(--ink)] text-[10px] sm:text-xs md:text-base truncate">
                 A&amp;R Truck &amp; Trailer Repairs
               </span>
-              <span className="text-[9px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.2em] uppercase text-foreground/60 truncate">
+              <span className="text-[8px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.2em] uppercase text-foreground/60 truncate">
                 Mobile Commercial Vehicle Repair
               </span>
             </span>
@@ -102,21 +102,24 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Right Action Area (Contains ONLY the text button and hamburger menu) */}
-          <div className="flex items-center gap-3 ml-auto shrink-0">
-            {/* THE ONLY CALL BUTTON (FORCED TEXT DISPLAY ON ALL DEVICES) */}
+          {/* Right Action Area */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* THE RESPONSIVE BUTTON: Short text on small mobile, full text on larger screens */}
             <a
               href={`tel:${TEL}`}
-              className="btn-primary !flex flex-row items-center justify-center gap-2 !py-2.5 !px-4 text-xs font-extrabold uppercase tracking-wider whitespace-nowrap shrink-0"
+              className="btn-primary !flex flex-row items-center justify-center gap-1.5 !py-2 !px-3 sm:!py-2.5 sm:!px-4 text-xs font-extrabold uppercase tracking-wider whitespace-nowrap shrink-0"
             >
-              <Phone className="h-4 w-4 shrink-0" />
-              <span>Call Dispatch</span>
+              <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
+              <span>
+                <span className="sm:hidden">Call</span>
+                <span className="hidden sm:inline">Call Dispatch</span>
+              </span>
             </a>
 
             {/* Hamburger Mobile Menu Toggle Button */}
             <button
               onClick={() => setOpen((v) => !v)}
-              className="lg:hidden grid place-items-center h-10 w-10 rounded-md border border-border shrink-0"
+              className="lg:hidden grid place-items-center h-9 w-9 sm:h-10 sm:w-10 rounded-md border border-border shrink-0"
               aria-label="Menu"
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
