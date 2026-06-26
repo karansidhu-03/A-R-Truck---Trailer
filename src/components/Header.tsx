@@ -60,10 +60,11 @@ export function Header() {
 
       {/* Main bar */}
       <div className="bg-white/95 backdrop-blur border-b border-border">
-        <div className="container-x flex h-16 md:h-20 items-center gap-4">
+        <div className="container-x flex h-16 md:h-20 items-center justify-between gap-4">
+          {/* Logo and Branding */}
           <Link
             to="/"
-            className="flex items-center gap-3 min-w-0"
+            className="flex items-center gap-3 min-w-0 shrink-0"
             aria-label="A&R Truck & Trailer Repairs Ltd. — Home"
           >
             <img
@@ -83,6 +84,7 @@ export function Header() {
             </span>
           </Link>
 
+          {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-8 mx-auto">
             {nav.map((n) => (
               <Link
@@ -100,33 +102,29 @@ export function Header() {
             ))}
           </nav>
 
-          {/* DESKTOP CALL BUTTON: Changed to hide on smaller screens, appearing from lg and up */}
-          <a
-            href={`tel:${TEL}`}
-            className="btn-primary hidden lg:inline-flex !py-3 !px-5 text-xs ml-auto lg:ml-0"
-          >
-            <Phone className="h-4 w-4" />
-            Call Dispatch
-          </a>
+          {/* Right Action Area (Contains ONLY the text button and hamburger menu) */}
+          <div className="flex items-center gap-3 ml-auto shrink-0">
+            {/* THE ONLY CALL BUTTON (FORCED TEXT DISPLAY ON ALL DEVICES) */}
+            <a
+              href={`tel:${TEL}`}
+              className="btn-primary !flex flex-row items-center justify-center gap-2 !py-2.5 !px-4 text-xs font-extrabold uppercase tracking-wider whitespace-nowrap shrink-0"
+            >
+              <Phone className="h-4 w-4 shrink-0" />
+              <span>Call Dispatch</span>
+            </a>
 
-          {/* MOBILE SQUARISH PHONE ICON: Adjusted to show continuously until desktop layout kicks in */}
-          <a
-            href={`tel:${TEL}`}
-            className="lg:hidden grid place-items-center h-10 w-10 rounded-md bg-[var(--safety)] text-white ml-auto"
-            aria-label="Call now"
-          >
-            <Phone className="h-5 w-5" />
-          </a>
-
-          <button
-            onClick={() => setOpen((v) => !v)}
-            className="lg:hidden grid place-items-center h-10 w-10 rounded-md border border-border"
-            aria-label="Menu"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+            {/* Hamburger Mobile Menu Toggle Button */}
+            <button
+              onClick={() => setOpen((v) => !v)}
+              className="lg:hidden grid place-items-center h-10 w-10 rounded-md border border-border shrink-0"
+              aria-label="Menu"
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
+        {/* Mobile Dropdown Drawer Menu */}
         {open && (
           <div className="lg:hidden border-t border-border bg-white">
             <div className="container-x py-3 flex flex-col">
