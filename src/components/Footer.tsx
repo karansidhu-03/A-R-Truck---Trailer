@@ -93,7 +93,7 @@ export function Footer() {
               <span className="text-white/70">
                 Calgary, Airdrie, Okotoks,
                 <br />
-                Cochrane, Chestermere & Area
+                Cochrane, Chestermere & Surrounding Areas
               </span>
             </li>
           </ul>

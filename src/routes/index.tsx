@@ -72,7 +72,7 @@ function Index() {
             </div>
 
             <h1 className="font-display font-extrabold uppercase leading-[0.95] text-[2.6rem] sm:text-6xl lg:text-7xl tracking-tight">
-              Calgary &amp; Airdrie
+              Calgary &amp; Nearby Areas
               <span className="block text-[var(--safety)] mt-2">
                 Mobile Truck Repair
               </span>
@@ -436,63 +436,153 @@ function Index() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-24 bg-[#FAFBFD] overflow-hidden">
         <div className="container-x">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="eyebrow justify-center">Testimonials</div>
-            <h2 className="mt-3 text-3xl md:text-5xl uppercase text-[var(--ink)] font-extrabold leading-tight">
-              Trusted by{" "}
-              <span className="text-[var(--safety)]">drivers &amp; fleets</span>
+          {/* Heading */}
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <div className="inline-block text-[var(--safety)] font-bold uppercase tracking-[0.2em] text-xs border-b-2 border-[var(--safety)] pb-1 mb-4">
+              Testimonials
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-[var(--ink)]">
+              What the Clients Say
             </h2>
-            <p className="mt-4 text-muted-foreground">
-              Real feedback from owner-operators and fleet managers we've helped
-              across Calgary &amp; Area.
-            </p>
           </div>
+        </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+        {/* Infinite Scrolling Container with Edge Fading Overlays */}
+        <div className="relative w-full">
+          {/* Left Fade Gradient */}
+          <div className="absolute top-0 bottom-0 left-0 w-20 md:w-40 bg-gradient-to-r from-[#FAFBFD] to-transparent z-10 pointer-events-none" />
+
+          {/* Right Fade Gradient */}
+          <div className="absolute top-0 bottom-0 right-0 w-20 md:w-40 bg-gradient-to-l from-[#FAFBFD] to-transparent z-10 pointer-events-none" />
+
+          {/* Scrolling Track */}
+          <div className="flex w-max gap-6 px-6 animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
             {[
               {
                 quote:
-                  "Blew an air line on the QE2 north of Airdrie at 2 AM. A&R rolled out within the hour, fixed it on the shoulder, and I made my delivery on time. Lifesavers.",
+                  "Blew an air line on the QE2 north of Airdrie at 2 AM. A&R arrived quickly, fixed everything roadside, and got me back on schedule.",
                 name: "Dave M.",
-                role: "Owner-Operator",
+                initials: "DM",
+                time: "4 months ago",
               },
               {
                 quote:
-                  "We run a small fleet out of Calgary and A&R handles all our CVIPs and roadside calls. Honest pricing, clear communication, and the work is always done right.",
+                  "Our fleet has trusted A&R for inspections and emergency repairs. Professional mechanics, fair pricing and excellent communication every time.",
                 name: "Sarah K.",
-                role: "Fleet Manager",
+                initials: "SK",
+                time: "11 months ago",
               },
               {
                 quote:
-                  "Brake chamber failed on my reefer in Okotoks. They diagnosed it, had the part, and had me rolling in under three hours. No tow, no shop wait. Highly recommend.",
+                  "Brake chamber failed outside Okotoks. They had the replacement on the truck and had me moving again in under three hours.",
                 name: "Jason R.",
-                role: "Long-Haul Driver",
+                initials: "JR",
+                time: "3 months ago",
               },
-            ].map((t) => (
-              <figure
-                key={t.name}
-                className="relative rounded-xl bg-[var(--surface)] border border-border p-7 flex flex-col"
+              {
+                quote:
+                  "Outstanding Mobile Mechanic – Above and Beyond. A&R provides fast, reliable, and professional mobile service every time. Highly recommended!",
+                name: "Nav Pillay",
+                initials: "NP",
+                time: "4 months ago",
+              },
+              // Duplicated set for seamless loops without whitespace gaps
+              {
+                quote:
+                  "Blew an air line on the QE2 north of Airdrie at 2 AM. A&R arrived quickly, fixed everything roadside, and got me back on schedule.",
+                name: "Dave M.",
+                initials: "DM",
+                time: "4 months ago",
+              },
+              {
+                quote:
+                  "Our fleet has trusted A&R for inspections and emergency repairs. Professional mechanics, fair pricing and excellent communication every time.",
+                name: "Sarah K.",
+                initials: "SK",
+                time: "11 months ago",
+              },
+              {
+                quote:
+                  "Brake chamber failed outside Okotoks. They had the replacement on the truck and had me moving again in under three hours.",
+                name: "Jason R.",
+                initials: "JR",
+                time: "3 months ago",
+              },
+              {
+                quote:
+                  "Outstanding Mobile Mechanic – Above and Beyond. A&R provides fast, reliable, and professional mobile service every time. Highly recommended!",
+                name: "Nav Pillay",
+                initials: "NP",
+                time: "4 months ago",
+              },
+            ].map((review, idx) => (
+              <div
+                key={`${review.name}-${idx}`}
+                className="flex flex-col justify-between rounded-xl bg-white p-6 shadow-sm border border-gray-100/80 w-[300px] md:w-[360px] shrink-0"
               >
-                <Quote className="absolute top-5 right-5 h-8 w-8 text-[var(--safety)]/20" />
-                <div className="flex gap-1 text-[var(--safety)] mb-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-current" />
-                  ))}
+                <div>
+                  {/* Google Icon and Stars Row */}
+                  <div className="flex items-center gap-1.5 mb-4">
+                    <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24">
+                      <path
+                        fill="#4285F4"
+                        d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v3.92h6.61c-.29 1.5-1.14 2.77-2.4 3.63v3h3.86c2.26-2.09 3.67-5.17 3.67-8.48z"
+                      />
+                      <path
+                        fill="#34A853"
+                        d="M12 24c3.24 0 5.97-1.08 7.96-2.91l-3.86-3c-1.08.72-2.45 1.16-4.1 1.16-3.15 0-5.81-2.13-6.76-5.01H1.33v3.1A11.98 11.98 0 0 0 12 24z"
+                      />
+                      <path
+                        fill="#FBBC05"
+                        d="M5.24 14.24a7.16 7.16 0 0 1 0-4.48V6.66H1.33a11.98 11.98 0 0 0 0 10.68l3.91-3.1z"
+                      />
+                      <path
+                        fill="#EA4335"
+                        d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42A11.92 11.92 0 0 0 12 0 11.98 11.98 0 0 0 1.33 6.66l3.91 3.1c.95-2.88 3.61-5.01 6.76-5.01z"
+                      />
+                    </svg>
+                    <div className="flex gap-0.5 text-amber-400">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star key={i} className="h-3.5 w-3.5 fill-current" />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Review Text */}
+                  <p className="text-sm font-medium text-slate-700 leading-relaxed">
+                    "{review.quote}"
+                  </p>
                 </div>
-                <blockquote className="text-sm md:text-base text-foreground/85 leading-relaxed flex-1">
-                  "{t.quote}"
-                </blockquote>
-                <figcaption className="mt-6 pt-5 border-t border-border">
-                  <div className="font-display font-extrabold uppercase tracking-wide text-sm text-[var(--ink)]">
-                    {t.name}
+
+                {/* Card Footer */}
+                <div className="mt-8 pt-4 border-t border-gray-50 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-9 w-9 place-items-center rounded-full bg-[var(--safety)]/10 text-[var(--safety)] font-bold text-xs shrink-0">
+                      {review.initials}
+                    </div>
+                    <div>
+                      <div className="font-extrabold text-xs uppercase tracking-wide text-[var(--ink)]">
+                        {review.name}
+                      </div>
+                      <div className="text-[11px] text-slate-400 mt-0.5">
+                        {review.time}
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-xs text-muted-foreground mt-0.5">
-                    {t.role}
-                  </div>
-                </figcaption>
-              </figure>
+
+                  {/* Links to your specified layout address */}
+                  <a
+                    href="https://maps.app.goo.gl/PmATUGPfotaCjrKg9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] font-extrabold uppercase tracking-wider text-[var(--safety)] hover:opacity-80 transition-opacity"
+                  >
+                    Read Review &gt;
+                  </a>
+                </div>
+              </div>
             ))}
           </div>
         </div>

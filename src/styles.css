@@ -5,6 +5,19 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-ink-soft: var(--ink-soft);
+
+  /* 👇 ADD THESE TWO UTILITIES INSIDE `@theme inline` */
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
   --font-sans: "Inter", system-ui, sans-serif;
   --font-display: "Montserrat", "Inter", system-ui, sans-serif;
 
