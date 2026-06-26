@@ -31,11 +31,22 @@ export function Header() {
             </a>
             <a
               href={`tel:${TEL}`}
-              className="flex items-center gap-2 hover:text-white"
+              className="btn-primary !flex flex-row items-center justify-center gap-2 !py-2.5 !px-4 text-xs font-extrabold uppercase tracking-wider ml-auto whitespace-nowrap shrink-0"
             >
-              <Phone className="h-3.5 w-3.5 text-[var(--safety)]" />
-              {TEL_DISPLAY}
+              <Phone className="h-4 w-4 shrink-0 block" />
+              <span className="!block !inline-block visible">
+                Call Dispatch
+              </span>
             </a>
+
+            {/* Menu Toggle Button */}
+            <button
+              onClick={() => setOpen((v) => !v)}
+              className="lg:hidden grid place-items-center h-10 w-10 rounded-md border border-border shrink-0"
+              aria-label="Menu"
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
             <span className="hidden lg:flex items-center gap-2">
               <MapPin className="h-3.5 w-3.5 text-[var(--safety)]" />
               Calgary, Alberta
@@ -89,17 +100,19 @@ export function Header() {
             ))}
           </nav>
 
+          {/* DESKTOP CALL BUTTON: Changed to hide on smaller screens, appearing from lg and up */}
           <a
             href={`tel:${TEL}`}
-            className="btn-primary hidden md:inline-flex !py-3 !px-5 text-xs"
+            className="btn-primary hidden lg:inline-flex !py-3 !px-5 text-xs ml-auto lg:ml-0"
           >
             <Phone className="h-4 w-4" />
             Call Dispatch
           </a>
 
+          {/* MOBILE SQUARISH PHONE ICON: Adjusted to show continuously until desktop layout kicks in */}
           <a
             href={`tel:${TEL}`}
-            className="md:hidden grid place-items-center h-10 w-10 rounded-md bg-[var(--safety)] text-white"
+            className="lg:hidden grid place-items-center h-10 w-10 rounded-md bg-[var(--safety)] text-white ml-auto"
             aria-label="Call now"
           >
             <Phone className="h-5 w-5" />

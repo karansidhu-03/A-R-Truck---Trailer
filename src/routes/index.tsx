@@ -463,14 +463,14 @@ function Index() {
               {
                 quote:
                   "Blew an air line on the QE2 north of Airdrie at 2 AM. A&R arrived quickly, fixed everything roadside, and got me back on schedule.",
-                name: "Dave M.",
+                name: "Rupinder singh",
                 initials: "DM",
                 time: "4 months ago",
               },
               {
                 quote:
                   "Our fleet has trusted A&R for inspections and emergency repairs. Professional mechanics, fair pricing and excellent communication every time.",
-                name: "Sarah K.",
+                name: "Rob Trucking LTD.",
                 initials: "SK",
                 time: "11 months ago",
               },
@@ -506,14 +506,14 @@ function Index() {
               {
                 quote:
                   "Brake chamber failed outside Okotoks. They had the replacement on the truck and had me moving again in under three hours.",
-                name: "Jason R.",
+                name: "Bhullar Trucking",
                 initials: "JR",
                 time: "3 months ago",
               },
               {
                 quote:
                   "Outstanding Mobile Mechanic – Above and Beyond. A&R provides fast, reliable, and professional mobile service every time. Highly recommended!",
-                name: "Nav Pillay",
+                name: "Singh Dispatch Pvt Ltd.",
                 initials: "NP",
                 time: "4 months ago",
               },
