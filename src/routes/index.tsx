@@ -411,7 +411,7 @@ function Index() {
                 <Phone className="h-4 w-4" /> Call Dispatch
               </a>
               <a
-                href="https://www.google.com/maps/place/Calgary,+AB"
+                href="https://maps.app.goo.gl/4gUHfQpGR7HGvFj48"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline"
