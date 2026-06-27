@@ -425,7 +425,7 @@ function Index() {
               title="Calgary Coverage Map"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d160599.6453675037!2d-114.2494054699318!3d51.02766861298457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537170030f87ef0d%3A0x289961bed7b95cc3!2sCalgary%2C%20AB!5e0!3m2!1sen!2sca!4v1719430000000!5m2!1sen!2sca"
               width="100%"
-              height="100%"
+              height="460"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
