@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Phone,
@@ -10,14 +11,22 @@ import {
   BadgeCheck,
   Wrench,
   Star,
-  Quote,
+  Award,
+  ChevronLeft,
+  ChevronRight,
+  X,
 } from "lucide-react";
 import heroImg from "../assets/hero-truck.jpg";
 import serviceImg from "../assets/mobile-service.jpg";
+import certifiedLogo from "../assets/certified-logo.jpg";
 import gallery1 from "../assets/gallery-1.jpg";
 import gallery2 from "../assets/gallery-2.jpg";
 import gallery3 from "../assets/gallery-3.jpg";
 import gallery4 from "../assets/gallery-4.jpg";
+import gallery5 from "../assets/gallery-5.jpg";
+import gallery6 from "../assets/gallery-6.jpg";
+import gallery7 from "../assets/gallery-7.jpg";
+import gallery8 from "../assets/gallery-8.jpg";
 import { ServiceCard } from "../components/ServiceCard";
 import { SERVICES } from "../lib/services";
 
@@ -43,7 +52,83 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const GALLERY_IMAGES = [
+  {
+    src: gallery1,
+    alt: "Mechanic working on a semi-truck engine bay at night",
+  },
+  {
+    src: gallery2,
+    alt: "Mobile service truck assisting a commercial trailer at sunset",
+  },
+  {
+    src: gallery3,
+    alt: "CVIP commercial vehicle inspection underneath a heavy duty truck",
+  },
+  { src: gallery4, alt: "Heavy duty truck tire being changed roadside" },
+  {
+    src: gallery5,
+    alt: "Mechanic performing advanced engine diagnostics on a fleet truck",
+  },
+  {
+    src: gallery6,
+    alt: "Heavy duty commercial vehicle brake shoes and drum replacement",
+  },
+  {
+    src: gallery7,
+    alt: "Technician conducting a comprehensive trailer air brake system test",
+  },
+  {
+    src: gallery8,
+    alt: "Mobile service technician repairing a diesel truck engine on location",
+  },
+];
+
 function Index() {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+
+  // Keyboard navigation for Lightbox
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxIndex(null);
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxIndex]);
+
+  const nextImage = () => {
+    setLightboxIndex((prev) =>
+      prev !== null ? (prev + 1) % GALLERY_IMAGES.length : null,
+    );
+  };
+
+  const prevImage = () => {
+    setLightboxIndex((prev) =>
+      prev !== null
+        ? (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length
+        : null,
+    );
+  };
+
+  // Touch handlers for mobile swiping
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+
+    if (diff > 50) nextImage(); // Swiped left
+    if (diff < -50) prevImage(); // Swiped right
+    setTouchStart(null);
+  };
+
   return (
     <>
       {/* HERO */}
@@ -57,8 +142,8 @@ function Index() {
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/85 to-[var(--ink)]/30" />
 
-        <div className="container-x py-16 md:py-24 grid lg:grid-cols-[1.2fr_1fr] gap-12 items-start text-white">
-          {/* Left: headline */}
+        <div className="container-x py-16 md:py-24 grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center text-white">
+          {/* Left: headline & Brand Verification Logo */}
           <div>
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <div className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider">
@@ -72,7 +157,7 @@ function Index() {
             </div>
 
             <h1 className="font-display font-extrabold uppercase leading-[0.95] text-[2.6rem] sm:text-6xl lg:text-7xl tracking-tight">
-              Calgary &amp; Nearby Areas
+              Calgary & Nearby Areas
               <span className="block text-[var(--safety)] mt-2">
                 Mobile Truck Repair
               </span>
@@ -83,6 +168,25 @@ function Index() {
               mechanics are on standby 24/7/365 to get your commercial truck,
               trailer, or fleet back on the road.
             </p>
+
+            {/* Premium Placement for Alberta Certified Badge Asset */}
+            <div className="mt-6 inline-flex items-center gap-4 rounded-xl bg-white/5 ring-1 ring-white/10 p-3 max-w-md backdrop-blur-sm">
+              <img
+                src={certifiedLogo}
+                alt="Alberta Certified Technician Badge"
+                className="h-12 w-auto object-contain rounded bg-white p-1 shrink-0"
+              />
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--safety)]">
+                  Provincially Certified
+                </h4>
+                <p className="text-xs text-white/70 mt-0.5 leading-normal">
+                  Our service crew is fully certified under the official Alberta
+                  Technician standards to service commercial fleet equipment
+                  safely.
+                </p>
+              </div>
+            </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="tel:+18257604242" className="btn-primary">
@@ -170,7 +274,7 @@ function Index() {
 
         {/* Feature cards */}
         <div className="container-x pb-14 md:pb-20 -mt-2 md:-mt-4">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
                 icon: Clock,
@@ -183,6 +287,11 @@ function Index() {
                 text: "Heavy-duty diesel specialists equipped with diagnostic tools to resolve engine codes.",
               },
               {
+                icon: Award,
+                title: "Alberta Certified",
+                text: "Fully qualified provincial technicians certified to maintain heavy duty machinery safely.",
+              },
+              {
                 icon: BadgeCheck,
                 title: "CVIP Accredited",
                 text: "Alberta licensed Commercial Vehicle Inspection Programs for full compliance.",
@@ -190,7 +299,7 @@ function Index() {
             ].map(({ icon: Icon, title, text }) => (
               <div
                 key={title}
-                className="rounded-xl bg-white text-[var(--ink)] p-6 shadow-xl ring-1 ring-black/5"
+                className="rounded-xl bg-white text-[var(--ink)] p-5 shadow-xl ring-1 ring-black/5"
               >
                 <div className="grid h-11 w-11 place-items-center rounded-md bg-[var(--safety)]/10 text-[var(--safety)] mb-4">
                   <Icon className="h-5 w-5" />
@@ -219,7 +328,7 @@ function Index() {
             <p className="mt-4 text-muted-foreground">
               Professional fleet inspections, diesel tuning, mechanical
               overhauls, and trailer body maintenance executed by on-site
-              technicians across Calgary &amp; Area.
+              technicians across Calgary & Area.
             </p>
           </div>
 
@@ -262,12 +371,12 @@ function Index() {
                 24/7
               </div>
               <div className="mt-1 text-sm font-semibold uppercase tracking-wider">
-                Roadside dispatch · Calgary &amp; Area
+                Roadside dispatch · Calgary & Area
               </div>
             </div>
           </div>
           <div className="order-1 lg:order-2">
-            <div className="eyebrow">Why A&amp;R</div>
+            <div className="eyebrow">Why A&R</div>
             <h2 className="mt-3 text-3xl md:text-5xl uppercase font-extrabold leading-tight">
               A tow and a wait costs more than a{" "}
               <span className="text-[var(--safety)]">repair</span>.
@@ -306,7 +415,7 @@ function Index() {
         <div className="container-x text-center">
           <div className="eyebrow justify-center">Service Areas</div>
           <h2 className="mt-3 text-2xl md:text-4xl uppercase font-extrabold text-[var(--ink)]">
-            Proudly serving Calgary &amp; surrounding region
+            Proudly serving Calgary & surrounding region
           </h2>
           <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm font-semibold">
             {[
@@ -343,37 +452,25 @@ function Index() {
             </p>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                src: gallery1,
-                alt: "Mechanic working on a semi-truck engine bay at night",
-              },
-              {
-                src: gallery2,
-                alt: "Mobile service truck assisting a commercial trailer at sunset",
-              },
-              {
-                src: gallery3,
-                alt: "CVIP commercial vehicle inspection underneath a heavy duty truck",
-              },
-              {
-                src: gallery4,
-                alt: "Heavy duty truck tire being changed roadside",
-              },
-            ].map((img) => (
+            {GALLERY_IMAGES.map((img, idx) => (
               <div
                 key={img.alt}
-                className="group relative overflow-hidden rounded-xl ring-1 ring-black/5 shadow-md aspect-[4/3]"
+                onClick={() => setLightboxIndex(idx)}
+                className="group relative cursor-pointer overflow-hidden rounded-xl ring-1 ring-black/5 shadow-md aspect-square"
               >
                 <img
                   src={img.src}
                   alt={img.alt}
                   loading="lazy"
                   width={1280}
-                  height={896}
+                  height={1280}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                  <span className="text-white text-xs font-medium tracking-wide bg-black/40 backdrop-blur-sm px-2.5 py-1 rounded-md">
+                    View Full Frame
+                  </span>
+                </div>
               </div>
             ))}
           </div>
@@ -400,7 +497,7 @@ function Index() {
                   <li key={c} className="flex items-center gap-3">
                     <MapPin className="h-4 w-4 text-[var(--safety)]" />
                     <span className="text-white/85">
-                      {c} &amp; surrounding areas
+                      {c} & surrounding areas
                     </span>
                   </li>
                 ),
@@ -438,7 +535,6 @@ function Index() {
       {/* TESTIMONIALS */}
       <section className="py-24 bg-[#FAFBFD] overflow-hidden">
         <div className="container-x">
-          {/* Heading */}
           <div className="max-w-3xl mx-auto text-center mb-16">
             <div className="inline-block text-[var(--safety)] font-bold uppercase tracking-[0.2em] text-xs border-b-2 border-[var(--safety)] pb-1 mb-4">
               Testimonials
@@ -449,15 +545,10 @@ function Index() {
           </div>
         </div>
 
-        {/* Infinite Scrolling Container with Edge Fading Overlays */}
         <div className="relative w-full">
-          {/* Left Fade Gradient */}
           <div className="absolute top-0 bottom-0 left-0 w-20 md:w-40 bg-gradient-to-r from-[#FAFBFD] to-transparent z-10 pointer-events-none" />
-
-          {/* Right Fade Gradient */}
           <div className="absolute top-0 bottom-0 right-0 w-20 md:w-40 bg-gradient-to-l from-[#FAFBFD] to-transparent z-10 pointer-events-none" />
 
-          {/* Scrolling Track */}
           <div className="flex w-max gap-6 px-6 animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
             {[
               {
@@ -488,7 +579,6 @@ function Index() {
                 initials: "NP",
                 time: "4 months ago",
               },
-              // Duplicated set for seamless loops without whitespace gaps
               {
                 quote:
                   "Blew an air line on the QE2 north of Airdrie at 2 AM. A&R arrived quickly, fixed everything roadside, and got me back on schedule.",
@@ -523,7 +613,6 @@ function Index() {
                 className="flex flex-col justify-between rounded-xl bg-white p-6 shadow-sm border border-gray-100/80 w-[300px] md:w-[360px] shrink-0"
               >
                 <div>
-                  {/* Google Icon and Stars Row */}
                   <div className="flex items-center gap-1.5 mb-4">
                     <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24">
                       <path
@@ -549,14 +638,11 @@ function Index() {
                       ))}
                     </div>
                   </div>
-
-                  {/* Review Text */}
                   <p className="text-sm font-medium text-slate-700 leading-relaxed">
                     "{review.quote}"
                   </p>
                 </div>
 
-                {/* Card Footer */}
                 <div className="mt-8 pt-4 border-t border-gray-50 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="grid h-9 w-9 place-items-center rounded-full bg-[var(--safety)]/10 text-[var(--safety)] font-bold text-xs shrink-0">
@@ -571,8 +657,6 @@ function Index() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Links to your specified layout address */}
                   <a
                     href="https://maps.app.goo.gl/PmATUGPfotaCjrKg9"
                     target="_blank"
@@ -615,6 +699,70 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* SWIPEABLE LIGHTBOX OVERLAY WITH CLOSE ACTION */}
+      {lightboxIndex !== null && (
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-md select-none touch-none"
+          onClick={() => setLightboxIndex(null)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Top Control Bar */}
+          <div className="absolute top-0 inset-x-0 p-5 flex justify-between items-center bg-gradient-to-b from-black/60 to-transparent z-10 text-white">
+            <span className="text-sm font-medium tracking-wider">
+              {lightboxIndex + 1} / {GALLERY_IMAGES.length}
+            </span>
+            <button
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 transition-all cursor-pointer z-30"
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxIndex(null);
+              }}
+              aria-label="Close Lightbox"
+            >
+              <X className="h-6 w-6 text-white" />
+            </button>
+          </div>
+
+          {/* Left Navigation Arrow */}
+          <button
+            className="hidden md:flex absolute left-6 p-3 rounded-full bg-white/5 hover:bg-white/10 active:scale-90 text-white transition-all z-20 cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
+          >
+            <ChevronLeft className="h-8 w-8" />
+          </button>
+
+          {/* Main Visual Image Content */}
+          <div
+            className="w-full max-w-5xl max-h-[80vh] px-4 flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={GALLERY_IMAGES[lightboxIndex].src}
+              alt={GALLERY_IMAGES[lightboxIndex].alt}
+              className="max-w-full max-h-[72vh] object-contain rounded-lg shadow-2xl pointer-events-none"
+            />
+            <p className="mt-6 text-center text-sm md:text-base font-medium text-gray-300 max-w-3xl line-clamp-2 px-2">
+              {GALLERY_IMAGES[lightboxIndex].alt}
+            </p>
+          </div>
+
+          {/* Right Navigation Arrow */}
+          <button
+            className="hidden md:flex absolute right-6 p-3 rounded-full bg-white/5 hover:bg-white/10 active:scale-90 text-white transition-all z-20 cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+          >
+            <ChevronRight className="h-8 w-8" />
+          </button>
+        </div>
+      )}
     </>
   );
 }
